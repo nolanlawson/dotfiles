@@ -20,7 +20,7 @@ function __parse_git_branch {
 }
 
 function __git_is_dirty {
-  git status --porcelain 2> /dev/null | tr '\n' ' ' | sed -e 's/.*/ */'
+  if [ "$(git status --porcelain 2>/dev/null)" != "" ]; then echo ' *'; fi
 }
 
 export PS1="\[\033]0;MINGW64:/c/Users/nolawson\007\]\[\033[32m\]\[\033[35m\]\[\033[33m\]\w\[\033[36m\]\$(__parse_git_branch)\[\033[0m\]\$(__git_is_dirty)\[\033[35m\] (>'.')> \[\033[0m\]"
