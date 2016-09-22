@@ -92,8 +92,6 @@ alias couchdb-stop="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.couchd
 alias couchdb-start="launchctl load ~/Library/LaunchAgents/homebrew.mxcl.couchdb.plist"
 alias couchdb-log="tail -f /usr/local/var/log/couchdb/couch.log"
 
-nvm use 0.10 > /dev/null
-
 function mingz () { curl -sL wzrd.in/standalone/"$1"|uglifyjs -mc 2>/dev/null|gzip -c|wc -c;}
 function webmify() { ffmpeg -i "$1" -c:v libvpx -r 60 -crf 10 -b:v 1M -c:a libvorbis -an $(echo $1 | sed 's/\(.*\)\..*/\1.webm/') ;}
 function mp4ify() { ffmpeg -i "$1" -r 60 -crf 10 -b:v 1M -an $(echo $1 | sed 's/\(.*\)\..*/\1.mp4/') ;}
