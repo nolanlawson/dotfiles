@@ -29,5 +29,7 @@ txtpink='\[\e[1;31m\]'
 txtend='\[\e[00m\]'
 export PS1="${txtgray}\W${txtend} ${txtcyan}\$(__parse_git_branch)\$(__git_is_dirty)${txtend}${txtpink}\$(__kirby_dance)${txtend} ${txtgray}\$${txtend} "
 
-export NVM_DIR=/home/nolan/nvm
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+# load tmux if we're not already in tmux
+if command -v tmux>/dev/null; then
+  [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
+fi
