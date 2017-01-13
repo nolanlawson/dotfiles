@@ -38,4 +38,7 @@ export WORKSPACE=/mnt/c/Users/Nolan/workspace
 # load tmux if we're not already in tmux
 if command -v tmux>/dev/null; then
   [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
-fiexport PATH=$PATH:/home/nolan/.npm-packages/bin
+fi
+
+export PATH=/home/nolan/.npm-packages/bin:$PATH
+
