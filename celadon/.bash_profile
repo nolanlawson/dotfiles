@@ -33,3 +33,5 @@ export PS1="${txtgray}\W${txtend} ${txtcyan}\$(__parse_git_branch)\$(__git_is_di
 if command -v tmux>/dev/null; then
   [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
 fi
+
+export PATH=/home/nolan/.npm-packages/bin:$PATH
