@@ -32,3 +32,10 @@ export PS1="${txtgray}\W${txtend} ${txtcyan}\$(__parse_git_branch)\$(__git_is_di
 export PATH=$PATH:/home/nolan/apps/hub-linux-amd64-2.3.0-pre8/bin
 
 alias print-colors='for x in 0 1 4 5 7 8; do for i in `seq 30 37`; do for a in `seq 40 47`; do echo -ne "\e[$x;$i;$a""m\\\e[$x;$i;$a""m\e[0;37;40m "; done; echo; done; done; echo "";'
+
+export WORKSPACE=/mnt/c/Users/Nolan/workspace
+
+# load tmux if we're not already in tmux
+if command -v tmux>/dev/null; then
+  [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
+fiexport PATH=$PATH:/home/nolan/.npm-packages/bin
