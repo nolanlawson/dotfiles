@@ -3,10 +3,12 @@ export ANDROID_HOME=/Users/nolan/Downloads/android-sdk/sdk
 export PATH=/Users/nolan/.npm-packages/bin:/usr/local/Cellar/curl/7.40.0/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$GRAILS_HOME/bin:/usr/texbin
 export PATH=$PATH:/Applications/Momentics.app/host_10_3_1_12/darwin/x86/usr/bin
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
+export PATH=$PATH:/Users/nolan/workspace/adb-sync
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 export EDITOR=`which vi`
 
 alias mou='open -a /Applications/Mou.app/'
+alias vlc='open -a /Applications/VLC.app/'
 alias audacity='open -a /Applications/Audacity/Audacity.app/'
 #
 # Making sure I don't shoot myself in the foot
@@ -88,7 +90,12 @@ function mingz () { curl -sL wzrd.in/standalone/"$1"|uglifyjs -mc 2>/dev/null|gz
 
 function webmify() { ffmpeg -i "$1" -c:v libvpx -r 60 -crf 10 -b:v 1M -c:a libvorbis -an $(echo $1 | sed 's/\(.*\)\..*/\1.webm/') ;}
 function mp4ify() { ffmpeg -i "$1" -r 60 -crf 10 -b:v 1M -an $(echo $1 | sed 's/\(.*\)\..*/\1.mp4/') ;}
+function gifify() { ffmpeg -i "$1" "${1}_frame%04d.png" && gifski -o $(echo $1 | sed 's/\(.*\)\..*/\1.gif/') $(echo "${1}_frame*.png") && rm -f $(echo "${1}_frame*.png") ;}
+function mp4ifyWithSound() { ffmpeg -i "$1" -r 60 -crf 10 -b:v 1M $(echo $1 | sed 's/\(.*\)\..*/\1.mp4/') ;}
 function gif2webm() { ffmpeg -i "$1" -c:v libvpx -crf 12 -b:v 500K $(echo $1 | sed 's/\(.*\)\..*/\1.webm/') ;}
+function mp4Downsample2X() { ffmpeg -i "$1" -vf scale=iw*.5:ih*.5 $(echo $1 | sed 's/\(.*\)\..*/\1_half_size.mp4/') ;}
+function mp4Downsample4X() { ffmpeg -i "$1" -vf scale=iw*.25:ih*.25 $(echo $1 | sed 's/\(.*\)\..*/\1_quarter_size.mp4/') ;}
+function mp4ifymp3() { ffmpeg -i "$1" -filter_complex "[0:a]showwaves=s=320x180:mode=line,format=yuv420p[v]" -map "[v]" -map 0:a -c:v libx264 -c:a aac -crf 30 $(echo $1 | sed 's/\(.*\)\..*/\1.mp4/') ;}
 
 export NVM_DIR="/Users/nolan/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -100,3 +107,10 @@ alias ios-clear="xcrun simctl erase all"
 function copyScreenshot() { bash -c "cp ~/Dropbox/Screenshots/$(ls ~/Dropbox/Screenshots/ | grep png$ | sort -r | head -n 1 | sed 's/ /\\ /g') $1" ;}
 alias nom="rm -fr node_modules/ && npm cache clean && npm install"
 alias tessel=t2
+alias travis-restart=/Users/nolan/workspace/travis-restart-failed-jobs/travis-restart-failed-jobs.py
+
+eval "$(rbenv init -)"
+
+alias start-postgres="pg_ctl -D /usr/local/var/postgres start"
+alias start-redis="redis-server /usr/local/etc/redis.conf"
+alias pb='pretty-bytes'
