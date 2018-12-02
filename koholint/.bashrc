@@ -222,4 +222,4 @@ export ANDROID_HOME=/home/nolan/software/sdk-tools-linux-4333796/tools
 export PATH=$PATH:/home/nolan/software/sdk-tools-linux-4333796/tools:/home/nolan/software/sdk-tools-linux-4333796/tools/bin:/home/nolan/software/sdk-tools-linux-4333796/build-tools/28.0.3
 export JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee -XX:+IgnoreUnrecognizedVMOptions'
 
-
+export PATH=$PATH:/home/nolan/workspace/Heimdall/bin
