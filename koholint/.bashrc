@@ -223,3 +223,5 @@ export PATH=$PATH:/home/nolan/software/sdk-tools-linux-4333796/tools:/home/nolan
 export JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee -XX:+IgnoreUnrecognizedVMOptions'
 
 export PATH=$PATH:/home/nolan/workspace/Heimdall/bin
+
+alias open='nautilus'
