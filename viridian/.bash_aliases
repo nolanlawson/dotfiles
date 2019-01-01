@@ -8,3 +8,5 @@ alias mv='mv -i'
 
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
+
+alias enable-apple-dvd='sg_raw /dev/sr0 EA 00 00 00 00 00 01'

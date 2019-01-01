@@ -147,6 +147,29 @@ export PS1="${txtgray}\W${txtend} ${txtblue}\$(__parse_git_branch)\$(__git_is_di
 
 export EDITOR=$(which vim)
 
+#
+# nvm
+#
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+#
+# go
+#
+
+export PATH=$PATH:/usr/lib/go-1.10/bin
+export GO_PATH=$HOME/go
+
+#
+# rbenv
+#
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+#
+# chokidar
+#
+
+export CHOKIDAR_USEPOLLING=1
